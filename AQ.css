@@ -1,0 +1,393 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: 300;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.button {
+  height: 40px;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 170px;
+  cursor: pointer;
+}
+
+.button .button-w-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.button .button-w-icon span {
+  color: #009900 !important;
+}
+
+.button .button-w-icon img {
+  width: 10px;
+  margin-left: 5px;
+}
+
+.back-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  overflow: hidden;
+  height: 0;
+  -webkit-transition: 500ms all;
+  transition: 500ms all;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+.back-button.active {
+  height: 22px;
+}
+
+.back-button p {
+  margin: 0;
+  margin-left: 5px;
+  font-size: 16px !important;
+}
+
+.back-button img {
+  -webkit-transition: 500ms all;
+  transition: 500ms all;
+}
+
+.back-button:hover img {
+  -webkit-transform: translateX(-5px);
+          transform: translateX(-5px);
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(49deg, #99cc00 0%, #009900 100%);
+}
+
+section .grid {
+  width: 1050px;
+  margin: 0 auto;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+section .grid .score-wheel {
+  width: 320px;
+  height: 320px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+section .grid .score-wheel .score-lines {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+section .grid .score-wheel .score-lines .score-pins {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  -webkit-transform: translate(-50%, -5px);
+          transform: translate(-50%, -5px);
+  width: 22px;
+  height: 22px;
+  z-index: 4;
+  -webkit-transition: 1000ms all;
+  transition: 1000ms all;
+}
+
+section .grid .score-wheel .score-lines .score-pins.hide {
+  opacity: 0;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: 50% 155px;
+          transform-origin: 50% 155px;
+  -webkit-transition: 2000ms all;
+  transition: 2000ms all;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin .pin-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin .pin-inner:hover .pin-description {
+  -webkit-transform: translateX(-50%) translateY(0);
+          transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin .pin-inner:hover:before {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin .pin-inner .pin-description {
+  position: absolute;
+  background-color: #fff;
+  padding: 5px;
+  left: 50%;
+  bottom: 100%;
+  margin-bottom: 10px;
+  opacity: 0;
+  -webkit-transform: translateX(-50%) translateY(10px);
+          transform: translateX(-50%) translateY(10px);
+  -webkit-transition: 500ms all;
+  transition: 500ms all;
+  pointer-events: none;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin .pin-inner .pin-description:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin .pin-inner .pin-description:after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
+  background-color: #fff;
+  left: 50%;
+  z-index: 1;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin .pin-inner .pin-description p {
+  margin: 0;
+  white-space: nowrap;
+  font-size: 12px;
+  position: relative;
+  z-index: 3;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin .pin-inner:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background-size: cover;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-image: url(http://res.cloudinary.com/da32ibrgl/image/upload/v1526911159/minus_b5cdlv.svg);
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin .pin-inner:before {
+  content: "";
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #fff;
+  -webkit-transition: 500ms all;
+  transition: 500ms all;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin:nth-child(1):after {
+  position: relative;
+  content: 1;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin:nth-child(2):after {
+  position: relative;
+  content: 2;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin:nth-child(3):after {
+  position: relative;
+  content: 3;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin:nth-child(4):after {
+  position: relative;
+  content: 4;
+}
+
+section .grid .score-wheel .score-lines .score-pins .pin:nth-child(5):after {
+  position: relative;
+  content: 5;
+}
+
+section .grid .score-wheel .score-lines svg {
+  width: 100%;
+  height: 100%;
+}
+
+section .grid .score-wheel .score-lines svg circle {
+  fill: none;
+  stroke-width: 10px;
+  opacity: 1;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: 150px 150px;
+          transform-origin: 150px 150px;
+  -webkit-transition: 2000ms all, 1000ms opacity;
+  transition: 2000ms all, 1000ms opacity;
+  stroke-dasharray: 911.061869541;
+  stroke-dashoffset: 911.061869541;
+}
+
+section .grid .score-wheel .score-lines svg circle.hide {
+  opacity: 0;
+}
+
+section .grid .score-wheel .score-lines svg circle.active {
+  opacity: 1;
+}
+
+section .grid .score-wheel .score-lines svg circle:nth-child(1) {
+  stroke: rgba(0, 0, 0, 0.025);
+}
+
+section .grid .score-wheel .score-lines svg circle:nth-child(2) {
+  stroke: #009900;
+}
+
+section .grid .score-wheel .score-lines svg circle:nth-child(3) {
+  stroke: #99cc00;
+}
+
+section .grid .score-wheel .score-lines svg circle:nth-child(4) {
+  stroke: #ffe600;
+}
+
+section .grid .score-wheel .score-lines svg circle:nth-child(5) {
+  stroke: #ff6600;
+}
+
+section .grid .score-wheel .score-lines svg circle:nth-child(6) {
+  stroke: #009ee0;
+}
+
+section .grid .score-wheel .score-values {
+  position: relative;
+  text-align: center;
+}
+
+section .grid .score-wheel .score-values .score-values-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+  -webkit-transition: 1000ms all;
+  transition: 1000ms all;
+}
+
+section .grid .score-wheel .score-values .score-values-inner.active {
+  opacity: 1;
+}
+
+section .grid .score-wheel .score-values h2 {
+  font-size: 150px;
+  line-height: 0.9;
+  font-weight: 300;
+  color: #666666;
+  margin: 10px 0;
+  margin-left: -10px;
+  letter-spacing: -10px;
+}
+
+section .grid .score-wheel .score-values h4 {
+  line-height: 1.4;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  margin: 0;
+}
+
+section .grid .score-description {
+  width: 600px;
+}
+
+section .grid .score-description h2 {
+  font-size: 45px;
+  font-weight: 300;
+  margin: 0;
+  color: #fff;
+}
+
+section .grid .score-description p {
+  line-height: 1.4;
+  font-size: 18px;
+  color: #fff;
+}
+/*# sourceMappingURL=AQ.css.map */
