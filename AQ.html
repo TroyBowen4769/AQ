@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang'"en>
+<head> 
+    <metadata charset'"UTF-8"></metadata>
+    <title>Test1</title>
+    <link rel="stylesheet" href="AQ.css">
+
+
+</head>
+
+<section>
+		<div class="grid">
+			<div class="score-wheel">
+				<div class="score-lines">
+					<div class="score-pins">
+						<div class="pin">
+							<div class="pin-inner">
+								<div class="pin-description">
+									<p>Communicating with Influence</p>
+								</div>
+							</div>
+						</div>
+						<div class="pin">
+							<div class="pin-inner">
+								<div class="pin-description">
+									<p>Communicating with Influence</p>
+								</div>
+							</div>
+						</div>
+						<div class="pin">
+							<div class="pin-inner">
+								<div class="pin-description">
+									<p>Communicating with Influence</p>
+								</div>
+							</div>
+						</div>
+						<div class="pin">
+							<div class="pin-inner">
+								<div class="pin-description">
+									<p>Communicating with Influence</p>
+								</div>
+							</div>
+						</div>
+						<div class="pin">
+							<div class="pin-inner">
+								<div class="pin-description">
+									<p>Communicating with Influence</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<svg viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="150" cy="150" r="145"> </circle>
+						<circle data-score="10" cx="150" cy="150" r="145"> </circle>
+						<circle data-score="10" cx="150" cy="150" r="145"> </circle>
+						<circle data-score="20" cx="150" cy="150" r="145"> </circle>
+						<circle data-score="15" cx="150" cy="150" r="145"> </circle>
+						<circle data-score="16" cx="150" cy="150" r="145"></circle>
+					</svg>
+				</div>
+				
+				<p id="myText"></p>
+        		<p id="myTextTag"></p>
+				<script>
+            		var text = document.getElementById("myText");
+					var tag = document.getElementById("myTextTag");
+					AQ = 5;
+					var toWrite = AQ
+					text.innerHTML = toWrite
+					tag.innerHTML = toWriteTag
+				</script>
+				<div class="score-values">
+					<div class="score-values-inner active">
+						<h4><strong>Base Score</strong></h4>
+<br>
+<br>
+<br> 
+<br>
+<br>
+						<h4>/100</h4>
+					</div>
+					<div class="score-values-inner">
+						<h4>Communicating with Influence</h4>
+						<h2>50</h2>
+						<h4>/20</h4>
+					</div>
+					<div class="score-values-inner">
+						<h4>Communicating with Influence</h4>
+						<h2>50</h2>
+						<h4>/20</h4>
+					</div>
+					<div class="score-values-inner">
+						<h4>Communicating with Influence</h4>
+						<h2>50</h2>
+						<h4>/20</h4>
+					</div>
+					<div class="score-values-inner">
+						<h4>Communicating with Influence</h4>
+						<h2>50</h2>
+						<h4>/20</h4>
+					</div>
+					<div class="score-values-inner">
+						<h4>Communicating with Influence</h4>
+						<h2>50</h2>
+						<h4>/20</h4>
+					</div>
+					
+				</div>
+			</div>
+			<div class="score-description">
+				<div class="back-button">
+					<img src="http://res.cloudinary.com/da32ibrgl/image/upload/v1526915125/back-button_mc6tzf.svg" alt="">
+					<p>back to overview</p>
+				</div>
+				<h2>Well done!</h2>
+				<p>Here is your Air Quality Score</p>
+				<div class="button">
+					<div class="button-w-icon">
+						<span>Go to dashboard</span>
+						<img src="http://res.cloudinary.com/da32ibrgl/image/upload/v1526902304/Arrow_e2gzeg.svg" alt="">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <script>
+        $(window).on("load", function() {
+        var radius = 145,
+        circleLength = 2 * Math.PI * radius;
+    
+        function setupCircles() {
+            var lastVal = 0;
+            $(".score-lines")
+            .find("circle")
+            .each(function(i) {
+                if (i === 0) {
+                    return;
+                }
+    
+                var value = parseInt($(this).attr("data-score"), 10),
+                    newRotation = -90 + lastVal / 100 * 360;
+    
+                $(this).css({
+                    transform: "rotateZ(" + newRotation + "deg)",
+                    "stroke-dasharray": circleLength,
+                    "stroke-dashoffset": circleLength * (1 - value / 100)
+                });
+    
+                var rotationVal = newRotation + value / 100 * 360 / 2;
+                $(".pin:nth-child(" + i + ")")
+                .css({
+                    transform: "rotate(" + (rotationVal + 90) + "deg)"
+                });
+    
+                $(".pin:nth-child(" + i + ")").children()
+                .css({
+                    transform: "rotate(" + ((rotationVal + 90)*-1) + "deg)"
+                });
+    
+                lastVal += value;
+            });
+    
+            $('.score-values-inner:nth-child('+(1)+')').find('h2').html(lastVal);
+        }
+    
+        setupCircles();
+    
+        $('.pin').on('click', function(){
+            var chosenVal = $(this).index(),
+            chosenCircle = $('.score-lines circle:nth-child('+(chosenVal + 2)+')');
+            var value = parseInt(chosenCircle.attr("data-score"), 10);
+    
+            $('.score-values-inner').removeClass('active');
+            $('.score-lines circle').removeClass('active').addClass('hide');
+    
+    
+            chosenCircle.addClass('active').css({
+                transform: 'rotate('+(-90)+'deg)',
+                "stroke-dashoffset": circleLength * (1 - value / 20)
+            });
+    
+            $('.score-pins').addClass('hide');
+            $('.back-button').addClass('active');
+    
+            setTimeout(function(){
+                $('.score-values-inner:nth-child('+(chosenVal + 2)+')').addClass('active').find('h2').html(value);
+            },1000); 
+            
+        });
+    
+        $('.back-button').on('click', function(){
+            $('.score-values-inner').removeClass('active');
+            $('.back-button').removeClass('active');
+            $('.score-lines circle').removeClass('active').removeClass('hide');
+    
+            setTimeout(function(){
+                $('.score-values-inner:nth-child('+(1)+')').addClass('active');
+            },1000); 	
+            setupCircles();
+            $('.score-pins').removeClass('hide');
+        });
+    });
+    </script>
+
+    </html>
+    
